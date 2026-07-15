@@ -21,6 +21,9 @@ public class OrderDto {
     private String externalId;
     private String partyId;
     private List<OrderItemDto> items = new ArrayList<>();
+    private List<OrderRoleDto> roles = new ArrayList<>();
+    private List<OrderPaymentDto> payments = new ArrayList<>();
+    private List<OrderStatusTransitionDto> allowedTransitions = new ArrayList<>();
 
     public String getOrderId() {
         return orderId;
@@ -132,5 +135,29 @@ public class OrderDto {
 
     public void setItems(List<OrderItemDto> items) {
         this.items = items;
+    }
+
+    public List<OrderRoleDto> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<OrderRoleDto> roles) {
+        this.roles = roles;
+    }
+
+    public List<OrderPaymentDto> getPayments() {
+        return payments;
+    }
+
+    public void setPayments(List<OrderPaymentDto> payments) {
+        this.payments = payments;
+    }
+
+    public List<OrderStatusTransitionDto> getAllowedTransitions() {
+        return allowedTransitions;
+    }
+
+    public void setAllowedTransitions(List<OrderStatusTransitionDto> allowedTransitions) {
+        this.allowedTransitions = allowedTransitions;
     }
 }

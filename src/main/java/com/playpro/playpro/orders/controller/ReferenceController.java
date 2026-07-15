@@ -5,6 +5,7 @@ import com.playpro.playpro.orders.service.ReferenceService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -37,5 +38,11 @@ public class ReferenceController {
     @GetMapping("/quote-statuses")
     public ResponseEntity<List<ReferenceItemDto>> quoteStatuses() {
         return ResponseEntity.ok(referenceService.listQuoteStatuses());
+    }
+
+    @GetMapping("/order-status-transitions")
+    public ResponseEntity<List<com.playpro.playpro.orders.dto.OrderStatusTransitionDto>> orderStatusTransitions(
+            @RequestParam("fromStatusId") String fromStatusId) {
+        return ResponseEntity.ok(referenceService.listOrderStatusTransitions(fromStatusId));
     }
 }

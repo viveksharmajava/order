@@ -28,6 +28,9 @@ public class OrderItem {
     @Column(name = "order_item_type_id", length = 20)
     private String orderItemTypeId;
 
+    @Column(name = "cancel_quantity", precision = 18, scale = 6)
+    private BigDecimal cancelQuantity;
+
     public OrderItemId getId() {
         return id;
     }
@@ -74,5 +77,13 @@ public class OrderItem {
 
     public void setOrderItemTypeId(String orderItemTypeId) {
         this.orderItemTypeId = orderItemTypeId;
+    }
+
+    public BigDecimal getCancelQuantity() {
+        return cancelQuantity;
+    }
+
+    public void setCancelQuantity(BigDecimal cancelQuantity) {
+        this.cancelQuantity = cancelQuantity;
     }
 }

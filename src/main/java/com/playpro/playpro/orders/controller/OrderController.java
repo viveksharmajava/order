@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import com.playpro.playpro.orders.dto.UpdateOrderStatusRequest;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -28,7 +30,7 @@ public class OrderController {
     @PostMapping
     public ResponseEntity<OrderDto> createOrder(@RequestHeader(value = "X-User", required = false) String xUser,
                                                 @RequestBody CreateOrderRequest request) {
-        return ResponseEntity.ok(orderService.createOrder(request, resolvePrincipal(xUser)));
+        return ResponseEntity.ok(orderService.createOrder(request, xUser));
     }
 
     @PostMapping("/find")
@@ -45,13 +47,19 @@ public class OrderController {
     public ResponseEntity<OrderDto> cancelOrder(@RequestHeader(value = "X-User", required = false) String xUser,
                                                 @PathVariable String orderId,
                                                 @RequestBody(required = false) CancelOrderRequest request) {
-        return ResponseEntity.ok(orderService.cancelOrder(orderId, request, resolvePrincipal(xUser)));
+        return ResponseEntity.ok(orderService.cancelOrder(orderId, request, xUser));
     }
 
-    private String resolvePrincipal(String xUser) {
-        if (xUser == null || !xUser.contains(":")) {
-            return "system";
-        }
-        return xUser.split(":", 2)[0];
+    @PostMapping("/{orderId}/complete")
+    public ResponseEntity<OrderDto> completeOrder(@RequestHeader(value = "X-User", required = false) String xUser,
+                                                  @PathVariable String orderId) {
+        return ResponseEntity.ok(orderService.completeOrder(orderId, xUser));
+    }
+
+    @PutMapping("/{orderId}/status")
+    public ResponseEntity<OrderDto> updateOrderStatus(@RequestHeader(value = "X-User", required = false) String xUser,
+                                                      @PathVariable String orderId,
+                                                      @RequestBody UpdateOrderStatusRequest request) {
+        return ResponseEntity.ok(orderService.updateOrderStatus(orderId, request, xUser));
     }
 }

@@ -12,6 +12,7 @@ public class OrderSearchRequest {
     private String orderIdMatch = "CONTAINS";
     private String productId;
     private String productIdMatch = "CONTAINS";
+    private String orderTypeId;
     private LocalDateTime orderDateFrom;
     private LocalDateTime orderDateTo;
     private int page = 0;
@@ -75,6 +76,14 @@ public class OrderSearchRequest {
 
     public TextMatchMode getProductIdMatchMode() {
         return TextMatchMode.fromString(productIdMatch);
+    }
+
+    public String getOrderTypeId() {
+        return orderTypeId;
+    }
+
+    public void setOrderTypeId(String orderTypeId) {
+        this.orderTypeId = orderTypeId;
     }
 
     public LocalDateTime getOrderDateFrom() {

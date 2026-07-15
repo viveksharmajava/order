@@ -10,6 +10,8 @@ public class CreateOrderRequest {
     private String currencyUom;
     private String productStoreId;
     private String externalId;
+    private String orderTypeId;
+    private String statusId;
     private List<OrderItemDto> items = new ArrayList<>();
 
     public String getPartyId() {
@@ -50,6 +52,22 @@ public class CreateOrderRequest {
 
     public void setExternalId(String externalId) {
         this.externalId = externalId;
+    }
+
+    public String getOrderTypeId() {
+        return orderTypeId;
+    }
+
+    public void setOrderTypeId(String orderTypeId) {
+        this.orderTypeId = orderTypeId;
+    }
+
+    public String getStatusId() {
+        return statusId;
+    }
+
+    public void setStatusId(String statusId) {
+        this.statusId = statusId;
     }
 
     public List<OrderItemDto> getItems() {
