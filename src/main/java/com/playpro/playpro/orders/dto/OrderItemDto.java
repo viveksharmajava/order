@@ -11,6 +11,7 @@ public class OrderItemDto {
     private String statusId;
     private String orderItemTypeId;
     private BigDecimal cancelQuantity;
+    private BigDecimal shippedQuantity;
 
     public String getOrderItemSeqId() {
         return orderItemSeqId;
@@ -66,5 +67,13 @@ public class OrderItemDto {
 
     public void setCancelQuantity(BigDecimal cancelQuantity) {
         this.cancelQuantity = cancelQuantity;
+    }
+
+    public BigDecimal getShippedQuantity() {
+        return shippedQuantity;
+    }
+
+    public void setShippedQuantity(BigDecimal shippedQuantity) {
+        this.shippedQuantity = shippedQuantity;
     }
 }

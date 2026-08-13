@@ -4,6 +4,7 @@ import com.playpro.playpro.orders.dto.CancelOrderRequest;
 import com.playpro.playpro.orders.dto.CreateOrderRequest;
 import com.playpro.playpro.orders.dto.OrderDto;
 import com.playpro.playpro.orders.dto.OrderSearchRequest;
+import com.playpro.playpro.orders.dto.ShipOrderRequest;
 import com.playpro.playpro.orders.service.OrderService;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -54,6 +55,13 @@ public class OrderController {
     public ResponseEntity<OrderDto> completeOrder(@RequestHeader(value = "X-User", required = false) String xUser,
                                                   @PathVariable String orderId) {
         return ResponseEntity.ok(orderService.completeOrder(orderId, xUser));
+    }
+
+    @PostMapping("/{orderId}/ship")
+    public ResponseEntity<OrderDto> shipOrder(@RequestHeader(value = "X-User", required = false) String xUser,
+                                              @PathVariable String orderId,
+                                              @RequestBody ShipOrderRequest request) {
+        return ResponseEntity.ok(orderService.shipOrder(orderId, request, xUser));
     }
 
     @PutMapping("/{orderId}/status")

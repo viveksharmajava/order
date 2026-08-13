@@ -13,7 +13,7 @@ public class QuoteItem {
     @EmbeddedId
     private QuoteItemId id;
 
-    @Column(name = "product_id", length = 20)
+    @Column(name = "product_id", length = 64)
     private String productId;
 
     @Column(name = "quantity", precision = 18, scale = 6)

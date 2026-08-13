@@ -24,6 +24,7 @@ public class OrderDto {
     private List<OrderRoleDto> roles = new ArrayList<>();
     private List<OrderPaymentDto> payments = new ArrayList<>();
     private List<OrderStatusTransitionDto> allowedTransitions = new ArrayList<>();
+    private List<OrderFulfillmentDto> fulfillments = new ArrayList<>();
 
     public String getOrderId() {
         return orderId;
@@ -159,5 +160,13 @@ public class OrderDto {
 
     public void setAllowedTransitions(List<OrderStatusTransitionDto> allowedTransitions) {
         this.allowedTransitions = allowedTransitions;
+    }
+
+    public List<OrderFulfillmentDto> getFulfillments() {
+        return fulfillments;
+    }
+
+    public void setFulfillments(List<OrderFulfillmentDto> fulfillments) {
+        this.fulfillments = fulfillments;
     }
 }
